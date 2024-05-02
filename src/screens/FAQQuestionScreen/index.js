@@ -1,38 +1,48 @@
-import Head from 'next/head';
-import { Footer } from '../../components/commons/Footer';
-import { Menu } from '../../components/commons/Menu';
-import { Box, Text, theme } from '../../theme/components';
+import { isHeading } from "datocms-structured-text-utils";
+import Head from "next/head";
+import { StructuredText, renderNodeRule } from "react-datocms";
+
+import { Footer } from "../../components/commons/Footer";
+import { Menu } from "../../components/commons/Menu";
+import { cmsService } from "../../infra/cms/cms-service";
+import { Box, Text, theme } from "../../theme/components";
 
 export async function getStaticPaths() {
   return {
-    paths: [
-      { params: { id: 'f138c88d' } },
-      { params: { id: 'h138c88d' } },
-    ],
+    paths: [{ params: { id: "f138c88d" } }, { params: { id: "h138c88d" } }],
     fallback: false,
   };
 }
 
-export function getStaticProps({ params }) {
+export async function getStaticProps({ params, preview }) {
   const { id } = params;
+  const contentQuery = `
+    query {
+      contentFaqQuestion {
+        title
+        content {
+          value
+        }
+      }
+    }
+  `;
+
+  const { data } = await cmsService({
+    query: contentQuery,
+    preview,
+  });
+
   return {
     props: {
+      cmsContent: data,
       id,
-      title: 'Fake Title',
-      content: `
-        <h2>Primeiro Tópico</h2>
-        <p>paragrafo simples</p>
-        <p>outro paragrafo simples</p>
-        <ul>
-          <li>Item de lista 01</li>
-          <li>Item de lista 02</li>
-        </ul>
-      `,
-    }
-  }
+      title: data.contentFaqQuestion.title,
+      content: data.contentFaqQuestion.content,
+    },
+  };
 }
 
-export default function FAQQuestionScreen({ title, content }) {
+export default function FAQQuestionScreen({ cmsContent }) {
   return (
     <>
       <Head>
@@ -52,23 +62,36 @@ export default function FAQQuestionScreen({ title, content }) {
       >
         <Box
           styleSheet={{
-            display: 'flex',
-            gap: theme.space.x4,
-            flexDirection: 'column',
-            width: '100%',
+            width: "100%",
             maxWidth: theme.space.xcontainer_lg,
-            marginHorizontal: 'auto',
+            marginHorizontal: "auto",
           }}
         >
           <Text tag="h1" variant="heading1">
-            {title}
+            {cmsContent.contentFaqQuestion.title}
           </Text>
 
-          <Box dangerouslySetInnerHTML={{ __html: content }} />
+          <StructuredText
+            data={cmsContent.contentFaqQuestion.content}
+            customNodeRules={[
+              renderNodeRule(isHeading, ({ node, children, key }) => {
+                const tag = `h${node.level}`;
+                const variant = `heading${node.level}`;
+
+                return (
+                  <Text tag={tag} variant={variant} key={key}>
+                    {children}
+                  </Text>
+                );
+              }),
+            ]}
+          />
+          {/* <Box dangerouslySetInnerHTML={{ __html: content }} /> */}
+          {/* <pre>{JSON.stringify(content, null, 4)}</pre> */}
         </Box>
       </Box>
 
-      <Footer />
+      <Footer description={cmsContent.globalContent.globalFooter.description} />
     </>
-  )
+  );
 }
