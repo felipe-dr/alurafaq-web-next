@@ -4,6 +4,7 @@ import { StructuredText, renderNodeRule } from "react-datocms";
 
 import { Footer } from "../../components/commons/Footer";
 import { Menu } from "../../components/commons/Menu";
+import { pageHOC } from "../../components/wrappers/page-hoc";
 import { cmsService } from "../../infra/cms/cms-service";
 import { Box, Text, theme } from "../../theme/components";
 
@@ -42,7 +43,7 @@ export async function getStaticProps({ params, preview }) {
   };
 }
 
-export default function FAQQuestionScreen({ cmsContent }) {
+function FAQQuestionScreen({ cmsContent }) {
   return (
     <>
       <Head>
@@ -77,7 +78,6 @@ export default function FAQQuestionScreen({ cmsContent }) {
               renderNodeRule(isHeading, ({ node, children, key }) => {
                 const tag = `h${node.level}`;
                 const variant = `heading${node.level}`;
-
                 return (
                   <Text tag={tag} variant={variant} key={key}>
                     {children}
@@ -86,12 +86,16 @@ export default function FAQQuestionScreen({ cmsContent }) {
               }),
             ]}
           />
+          {/* <pre>
+            {JSON.stringify(content, null, 4)}
+          </pre> */}
           {/* <Box dangerouslySetInnerHTML={{ __html: content }} /> */}
-          {/* <pre>{JSON.stringify(content, null, 4)}</pre> */}
         </Box>
       </Box>
 
-      <Footer description={cmsContent.globalContent.globalFooter.description} />
+      <Footer />
     </>
   );
 }
+
+export default pageHOC(FAQQuestionScreen);

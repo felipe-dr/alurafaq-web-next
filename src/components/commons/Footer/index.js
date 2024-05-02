@@ -1,9 +1,13 @@
+import { getCMSContent } from "../../../infra/cms/cms-provider";
 import { Box, Text, Link, theme } from "../../../theme/components";
 
 /**
  * A SENHASEGURA poderia estar em uma variável de ambiente
  */
-export function Footer({ description }) {
+export function Footer() {
+  // console.log(getCMSContent('contentFaqQuestiona'));
+  const description = getCMSContent("globalContent.globalFooter.description");
+
   return (
     <Box
       tag="footer"
