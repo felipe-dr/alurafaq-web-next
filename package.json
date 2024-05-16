@@ -1,8 +1,21 @@
 {
   "name": "alurafaq-web-next",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "O Alura FAQ possibilita ao visitante encontrar perguntas e respostas de um determinado assunto, cadastrados no DatoCMS.",
+  "author": {
+    "name": "Felipe DR",
+    "email": "felipe.corp7@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/felipe-dr/alurafaq-web-next"
+  },
+  "bugs": {
+    "url": "https://github.com/felipe-dr/alurafaq-web-next/issues",
+    "email": "felipe.corp7@gmail.com"
+  },
+  "keywords": [],
+  "license": "MIT",
   "scripts": {
     "start": "next start",
     "build": "next build",
@@ -17,8 +30,5 @@
     "react-dom": "^17.0.2",
     "react-is": "^17.0.2",
     "styled-components": "^5.2.3"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  }
 }
