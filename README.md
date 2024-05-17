@@ -32,19 +32,19 @@
 ## Índice
 
 <ol>
-  <li><a href="#📑-sobre">Sobre</a></li>
-  <li><a href="#⚙️-funcionalidades">Funcionalidades</a></li>
-  <li><a href="#🚀-como-executar">Como executar</a></li>
-  <li><a href="#🛠️-tecnologias">Tecnologias</a></li>
-  <li><a href="#🦸-autor">Autor</a></li>
-  <li><a href="#📝-licença">Licença</a></li>
+  <li><a href="#-sobre">Sobre</a></li>
+  <li><a href="#-funcionalidades">Funcionalidades</a></li>
+  <li><a href="#-como-executar">Como executar</a></li>
+  <li><a href="#-tecnologias">Tecnologias</a></li>
+  <li><a href="#-autor">Autor</a></li>
+  <li><a href="#-licença">Licença</a></li>
 </ol>
 
 ## 📑 Sobre
 
 O Alura FAQ é um projeto que inicialmente continha apenas conteúdos estáticos (dados fixos no código) e que foi integrado com o DatoCMS, afim de serem gerenciados e personalizados por meio de uma interface administrativa.
 
-## ⚙️ Funcionalidades
+## ⚙ Funcionalidades
 
 - [x] Usuário administrador da plataforma CMS, poderá customizar informações globais e específicas de cada página, tais como:
 
@@ -76,7 +76,8 @@ O Alura FAQ é um projeto que inicialmente continha apenas conteúdos estáticos
 
 É necessário que se tenha um projeto criado no [DatoCMS](https://www.datocms.com/) com o seu respectivo `token`, para ser possível integrá-lo ao projeto, assim como os `schemas` de entradas já pré-definidos para o consumo no projeto.
 
-> [!IMPORTANT] Importante
+> **! AVISO**
+>
 > No procedimento abaixo, é fornecido um `token` de um projeto criado no DatoCMS, assim como os `schemas` e dados já cadastrados.
 
 #### Executar o projeto localmente
@@ -145,7 +146,7 @@ yarn dev
 http://localhost:3000
 ```
 
-## 🛠️ Tecnologias
+## 🛠 Tecnologias
 
 - [Next.js](https://nextjs.org/)
 - [React.js](https://reactjs.org/)
@@ -156,15 +157,21 @@ http://localhost:3000
 
 ## 🦸 Autor
 
-<a href="https://github.com/felipe-dr">
-  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/62888625?s=96&v=4" width="100px;" alt="Avatar do autor" />
-  <br />
-  <sub><strong>Felipe DR</strong></sub>
-</a>
-
-Analista desenvolvedor
-
-[![Gmail badge](https://img.shields.io/badge/-felipe.corp7@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:felipe.corp7@gmail.com)](mailto:felipe.corp7@gmail.com)
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/felipe-dr">
+        <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/62888625?s=96&v=4" width="100px;" alt="Avatar do autor" />
+        <br />
+        <sub>
+          <b>Felipe DR</b>
+        </sub>
+      </a>
+      <br />
+      <a href="mailto:felipe.corp7@gmail.com" title="E-mail">📩</a>
+    </td>
+  </tr>
+</table>
 
 ## 📝 Licença
 
